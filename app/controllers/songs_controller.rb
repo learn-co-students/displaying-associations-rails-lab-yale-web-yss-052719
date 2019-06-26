@@ -1,11 +1,17 @@
 class SongsController < ApplicationController
   def index
+    @songs = Song.all 
+    render '/songs/index.html.erb'
   end
 
   def show
+    @song = Song.find(params[:id])
+    render '/songs/show.html.erb'
   end
 
   def new
+    @song = Song.new
+    render '/songs/new.html.erb'
   end
 
   def create
