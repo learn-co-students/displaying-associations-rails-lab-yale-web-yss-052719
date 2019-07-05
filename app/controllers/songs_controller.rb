@@ -1,11 +1,15 @@
 class SongsController < ApplicationController
   def index
+    @songs = Song.all
   end
 
   def show
+    @song = Song.find(params[:id])
+    @artist = Artist.find(@song.artist_id)
   end
 
   def new
+    @song = Song.new
   end
 
   def create
@@ -40,6 +44,8 @@ class SongsController < ApplicationController
     flash[:notice] = "Song deleted."
     redirect_to songs_path
   end
+
+  
 
   private
 
